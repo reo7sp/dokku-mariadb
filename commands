@@ -132,9 +132,7 @@ case "$1" in
     dokku "$PLUGIN_COMMAND_PREFIX:info" "$SERVICE"
 
     while read link; do
-      dokku_log_info1 "Restarting application: $link"
-      dokku release $link
-      dokku deploy $link
+      dokku ps:restart $link
     done < "$LINKS_FILE"
     ;;
 
